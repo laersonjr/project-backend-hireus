@@ -1,7 +1,6 @@
 package com.pagamento.hireus.api.controller;
 
 import java.net.URI;
-import java.time.OffsetDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.pagamento.hireus.domain.model.Cargo;
-import com.pagamento.hireus.domain.model.Funcionario;
 import com.pagamento.hireus.domain.repository.CargoRepository;
 
 @RestController
@@ -48,7 +46,6 @@ public class CargoController {
 	 * @author Bruno Brito ajudou no Hatoes.
 	 */
 	public ResponseEntity<Cargo> salvarCargo(@RequestBody Cargo cargo) {
-	
 		cargo = cargoRepository.save(cargo);
 		//HATEOS
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(cargo.getId())

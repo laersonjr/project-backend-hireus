@@ -2,70 +2,36 @@ package com.pagamento.hireus.domain.model;
 
 import java.time.OffsetDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 public class Funcionario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(nullable = false, length = 70)
 	private String nomeFuncionario;
+	@Column(nullable = false, unique = true, length = 10)
 	private String matriculaFuncionario;
+	@Column(nullable = false)
 	private Boolean status;
+	@Column(nullable = false)
 	private OffsetDateTime dataAdimissao;
 	private OffsetDateTime dataDesligamento;
+	@ManyToOne
+	private Cargo cargo;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNomeFuncionario() {
-		return nomeFuncionario;
-	}
-
-	public void setNomeFuncionario(String nomeFuncionario) {
-		this.nomeFuncionario = nomeFuncionario;
-	}
-
-	public String getMatriculaFuncionario() {
-		return matriculaFuncionario;
-	}
-
-	public void setMatriculaFuncionario(String matriculaFuncionario) {
-		this.matriculaFuncionario = matriculaFuncionario;
-	}
-
-	public Boolean getStatus() {
-		return status;
-	}
-
-	public void setStatus(Boolean status) {
-		this.status = status;
-	}
-
-	public OffsetDateTime getDataAdimissao() {
-		return dataAdimissao;
-	}
-
-	public void setDataAdimissao(OffsetDateTime dataAdimissao) {
-		this.dataAdimissao = dataAdimissao;
-	}
-
-	public OffsetDateTime getDataDesligamento() {
-		return dataDesligamento;
-	}
-
-	public void setDataDesligamento(OffsetDateTime dataDesligamento) {
-		this.dataDesligamento = dataDesligamento;
-	}
 
 	@Override
 	public int hashCode() {

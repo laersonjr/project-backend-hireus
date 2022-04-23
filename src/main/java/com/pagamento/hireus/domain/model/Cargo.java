@@ -1,12 +1,17 @@
 package com.pagamento.hireus.domain.model;
 
 import java.math.BigDecimal;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,18 +25,17 @@ public class Cargo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(nullable = false, length = 40)
 	private String descricaoCargo;
+	@Column(nullable = false)
 	private BigDecimal salarioCargo;
+	@Column(nullable = false)
 	private Integer totalHorasCargo;
+	@JsonIgnore
+	@OneToMany(mappedBy = "cargo")
+	private List<Funcionario> funcionarios = new ArrayList<>();
 	
-	public Long getId() {
-		return id;
-	}
-	
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
