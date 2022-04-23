@@ -1,19 +1,22 @@
 package com.pagamento.hireus.api.controller;
 
+import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.pagamento.hireus.domain.model.Funcionario;
 import com.pagamento.hireus.domain.repository.FuncionarioRepository;
@@ -52,9 +55,40 @@ public class FuncionarioController {
 	}
 	
 	@PostMapping
-	public Funcionario salvarFuncionario (@RequestBody Funcionario funcionario) {
+	@ResponseStatus(HttpStatus.CREATED)
+	/**
+	 * @author Bruno Brito ajudou no Hatoes.
+	 */
+	public ResponseEntity<Funcionario> salvarFuncionario(@RequestBody Funcionario funcionario) {
 		funcionario.setDataAdimissao(OffsetDateTime.now());
-		return funcionarioRepository.save(funcionario);
+		funcionario = funcionarioRepository.save(funcionario);
+		//HATEOS
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(funcionario.getId())
+				.toUri();
+		return ResponseEntity.created(uri).body(funcionario);
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Funcionario> excluirFuncionario(@PathVariable Long id) {
+		if (!funcionarioRepository.existsById(id)) {
+			return ResponseEntity.notFound().build();
+		}
+
+		funcionarioRepository.deleteById(id);
+		return ResponseEntity.noContent().build();
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<Funcionario> atualizarFuncionario(@PathVariable Long id,
+			@RequestBody Funcionario funcionario) {
+		if (!funcionarioRepository.existsById(id)) {
+			return ResponseEntity.notFound().build();
+		}
+
+		funcionario.setId(id);
+		funcionario = funcionarioRepository.save(funcionario);
+
+		return ResponseEntity.ok(funcionario);
 	}
 	
 }

@@ -12,7 +12,7 @@ import com.pagamento.hireus.domain.model.Funcionario;
 @Repository
 public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>{
 	
-	//Pesquisa funcionário onde o parâmetro recebido contem no nome
+
 	@Query("SELECT m from Funcionario m WHERE m.nomeFuncionario LIKE %:nome%")
 	List<Funcionario> findByNomeFuncionarioContaining(@Param("nome") String nome);
 	@Query("SELECT m from Funcionario m WHERE m.matriculaFuncionario LIKE %:matricula%")

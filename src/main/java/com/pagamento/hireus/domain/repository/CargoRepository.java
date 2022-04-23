@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.pagamento.hireus.domain.model.Cargo;
 
 @Repository
-public interface CargoRespository extends JpaRepository<Cargo, Long>{
+public interface CargoRepository extends JpaRepository<Cargo, Long>{
 
 }

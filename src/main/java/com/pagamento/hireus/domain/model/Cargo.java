@@ -1,6 +1,7 @@
 package com.pagamento.hireus.domain.model;
 
 import java.math.BigDecimal;
+import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +11,9 @@ import javax.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
+
 @Getter
+@Setter
 @Entity
 public class Cargo {
 	
@@ -21,6 +23,14 @@ public class Cargo {
 	private String descricaoCargo;
 	private BigDecimal salarioCargo;
 	private Integer totalHorasCargo;
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
 	
 	@Override
 	public int hashCode() {
@@ -45,7 +55,6 @@ public class Cargo {
 			return false;
 		return true;
 	}
-	
-	
+
 
 }
