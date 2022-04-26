@@ -3,7 +3,11 @@ package com.pagamento.hireus.api.controller;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +22,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.pagamento.hireus.api.model.FuncionarioInputModel;
+import com.pagamento.hireus.api.model.FuncionarioOutputModel;
+import com.pagamento.hireus.domain.model.Cargo;
 import com.pagamento.hireus.domain.model.Funcionario;
+import com.pagamento.hireus.domain.repository.CargoRepository;
 import com.pagamento.hireus.domain.repository.FuncionarioRepository;
 
 @RestController
@@ -28,10 +36,16 @@ public class FuncionarioController {
 	@Autowired
 	private FuncionarioRepository funcionarioRepository;
 	
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	@Autowired
+	private CargoRepository cargoRepository;
+	
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
-	public List<Funcionario> listarFuncionario(){
-		return funcionarioRepository.findAll();
+	public List<FuncionarioOutputModel> listarFuncionario(){
+		return toCollectionModel(funcionarioRepository.findAll());
 	}
 	
 	@GetMapping("/{id}")
@@ -59,12 +73,17 @@ public class FuncionarioController {
 	/**
 	 * @author Bruno Brito ajudou no Hatoes.
 	 */
-	public ResponseEntity<Funcionario> salvarFuncionario(@RequestBody Funcionario funcionario) {
+	public ResponseEntity<Funcionario> salvarFuncionario(@RequestBody @Valid FuncionarioInputModel funcionarioInputModel) {
+		Funcionario funcionario = toEntity(funcionarioInputModel);
+		Cargo cargo = cargoRepository.findById(funcionarioInputModel.getCargoId()).get();
 		funcionario.setDataAdimissao(OffsetDateTime.now());
+		funcionario.setStatus(true);
+		funcionario.setCargo(cargo);
 		funcionario = funcionarioRepository.save(funcionario);
 		//HATEOS
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(funcionario.getId())
 				.toUri();
+		
 		return ResponseEntity.created(uri).body(funcionario);
 	}
 	
@@ -89,6 +108,20 @@ public class FuncionarioController {
 		funcionario = funcionarioRepository.save(funcionario);
 
 		return ResponseEntity.ok(funcionario);
+	}
+	
+	private FuncionarioOutputModel toModel(Funcionario funcionario) {
+		return modelMapper.map(funcionario, FuncionarioOutputModel.class);
+	}
+	
+	private List<FuncionarioOutputModel> toCollectionModel(List<Funcionario> funcionarios){
+		return funcionarios.stream()
+				.map(funcionario -> toModel(funcionario))
+				.collect(Collectors.toList());
+	}
+	
+	private Funcionario toEntity(FuncionarioInputModel funcionarioInputModel) {
+		return modelMapper.map(funcionarioInputModel, Funcionario.class);
 	}
 	
 }
