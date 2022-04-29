@@ -2,7 +2,11 @@ package com.pagamento.hireus.api.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +21,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.pagamento.hireus.api.model.CargoInputModel;
+import com.pagamento.hireus.api.model.CargoOutputModel;
 import com.pagamento.hireus.domain.model.Cargo;
 import com.pagamento.hireus.domain.repository.CargoRepository;
 
@@ -27,10 +33,13 @@ public class CargoController {
 	@Autowired
 	private CargoRepository cargoRepository;
 	
+	@Autowired
+	private ModelMapper modelMapper;
+	
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
-	public List<Cargo> listarCargo(){
-		return cargoRepository.findAll();
+	public List<CargoOutputModel> listarCargo(){
+		return toCollectionModel(cargoRepository.findAll());
 	}
 	
 	@GetMapping("/{id}")
@@ -45,7 +54,8 @@ public class CargoController {
 	/**
 	 * @author Bruno Brito ajudou no Hatoes.
 	 */
-	public ResponseEntity<Cargo> salvarCargo(@RequestBody Cargo cargo) {
+	public ResponseEntity<Cargo> salvarCargo(@Valid @RequestBody CargoInputModel cargoInputModel) {
+		Cargo cargo = toEntity(cargoInputModel);
 		cargo = cargoRepository.save(cargo);
 		//HATEOS
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(cargo.getId())
@@ -74,6 +84,20 @@ public class CargoController {
 		cargo = cargoRepository.save(cargo);
 
 		return ResponseEntity.ok(cargo);
+	}
+	
+	private CargoOutputModel toModel(Cargo cargo) {
+		return modelMapper.map(cargo, CargoOutputModel.class);
+	}
+	
+	private List<CargoOutputModel> toCollectionModel(List<Cargo> cargos){
+		return cargos.stream()
+				.map(this::toModel)
+				.collect(Collectors.toList());
+	}
+	
+	private Cargo toEntity(CargoInputModel cargoInputModel) {
+		return modelMapper.map(cargoInputModel, Cargo.class);
 	}
 	
 

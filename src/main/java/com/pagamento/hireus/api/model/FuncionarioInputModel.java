@@ -14,7 +14,7 @@ public class FuncionarioInputModel {
 	private Long id;
 	@NotBlank
 	@Size(min = 10, max = 70)
-//	@Pattern(regexp = "^[A-Z]+(.)*")
+	@Pattern(regexp = "^[A-Z]+(.)*", message = "A palavra deve iniciar com letra maiuscula")
 	private String nomeFuncionario;
 	@NotBlank
 	@Size(min = 10, max = 10)

@@ -116,7 +116,7 @@ public class FuncionarioController {
 	
 	private List<FuncionarioOutputModel> toCollectionModel(List<Funcionario> funcionarios){
 		return funcionarios.stream()
-				.map(funcionario -> toModel(funcionario))
+				.map(this::toModel)
 				.collect(Collectors.toList());
 	}
 	
