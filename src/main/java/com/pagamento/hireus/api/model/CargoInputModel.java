@@ -19,10 +19,10 @@ public class CargoInputModel {
 //	@Pattern(regexp = "^[A-Z]+(.)*")
 	private String descricaoCargo;
 	@NotNull
-//	@Pattern(regexp = "[1-9][0-9]*")
+//	@Pattern(regexp = "^[0-9]+[\.]?[0-9]+$", message = "Apenas números maior que zero. Decimal formato xxxx.xx")
 	private BigDecimal salarioCargo;
 	@NotNull
-//	@Pattern(regexp = "[1-9][0-9]*")
+//	@Pattern(regexp = "^[1-9]+[0-9]*$", message = "Apenas valores positivos")
 	private Integer totalHorasCargo;
 
 }

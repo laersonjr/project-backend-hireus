@@ -35,7 +35,6 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 		}
 		
 		var problema = new Problema();
-		// Pega o código do status atribui para variavel status da classe problema
 		problema.setStatus(status.value());
 		problema.setTitulo("Um ou mais campos estão inválidos. Faça o preenchimento correto e tente novamente");
 		problema.setErros(erros);
