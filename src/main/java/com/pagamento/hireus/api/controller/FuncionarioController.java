@@ -1,11 +1,9 @@
 package com.pagamento.hireus.api.controller;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,68 +31,44 @@ public class FuncionarioController {
 	private FuncionarioRepository funcionarioRepository;
 	
 	@Autowired
-	private ModelMapper modelMapper;
-	
-	@Autowired
 	private FuncionarioService funcionarioService;
 	
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
 	public List<FuncionarioOutputModel> listarFuncionario(){
-		return toCollectionModel(funcionarioRepository.findAll());
+		return funcionarioService.toCollectionModel(funcionarioRepository.findAll());
 	}
-// Pendente
+	
 	@GetMapping("/{id}")
-	public ResponseEntity<Funcionario> buscarFuncionarioId(@PathVariable Long id){
-		return funcionarioRepository.findById(id)
-				.map(record -> ResponseEntity.ok().body(record))
-		           .orElse(ResponseEntity.notFound().build());
+	public ResponseEntity<FuncionarioOutputModel> buscarFuncionarioId(@PathVariable Long id){
+		return funcionarioService.buscarFuncionarioIdService(id);
 	}
 	
 	@GetMapping("/nome/{nomeFunc}")
 	public List<FuncionarioOutputModel> listarFuncionarioNome(@PathVariable String nomeFunc){
-		return toCollectionModel(funcionarioRepository.findByNomeFuncionarioContaining(nomeFunc));
+		return funcionarioService.toCollectionModel(funcionarioRepository.findByNomeFuncionarioContaining(nomeFunc));
 	}
 	
 	@GetMapping("/mat/{matFunc}")
 	public List<FuncionarioOutputModel> listarFuncionarioMatricula(@PathVariable String matFunc){
-		return  toCollectionModel(funcionarioRepository.findByMatriculaFuncionarioContaining(matFunc));
+		return  funcionarioService.toCollectionModel(funcionarioRepository.findByMatriculaFuncionarioContaining(matFunc));
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Funcionario> salvarFuncionario(@Valid @RequestBody FuncionarioInputModel funcionarioInputModel) {
-		return funcionarioService.salvarFuncionario(funcionarioInputModel);
+		return funcionarioService.salvarFuncionarioService(funcionarioInputModel);
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Funcionario> excluirFuncionario(@PathVariable Long id) {		
-		return funcionarioService.excluirFuncionario(id);
+		return funcionarioService.excluirFuncionarioService(id);
 	}
-// Pendente
+
 	@PutMapping("/{id}")
 	public ResponseEntity<Funcionario> atualizarFuncionario(@PathVariable Long id,
-			@Valid @RequestBody Funcionario funcionario) {
-		if (!funcionarioRepository.existsById(id)) {
-			return ResponseEntity.notFound().build();
-		}
-
-		funcionario.setId(id);
-		funcionario = funcionarioRepository.save(funcionario);
-
-		return ResponseEntity.ok(funcionario);
+			@Valid @RequestBody FuncionarioInputModel funcionarioInputModel) {
+		return funcionarioService.atualizarFuncionarioService(id, funcionarioInputModel);
 	}
-	
-	private FuncionarioOutputModel toModel(Funcionario funcionario) {
-		return modelMapper.map(funcionario, FuncionarioOutputModel.class);
-	}
-	
-	private List<FuncionarioOutputModel> toCollectionModel(List<Funcionario> funcionarios){
-		return funcionarios.stream()
-				.map(this::toModel)
-				.collect(Collectors.toList());
-	}
-	
-
 	
 }

@@ -25,7 +25,7 @@ public class Funcionario {
 	@Column(nullable = false, unique = true, length = 10)
 	private String matriculaFuncionario;
 	@Column(nullable = false)
-	private Boolean status;
+	private Boolean ativo;
 	@Column(nullable = false)
 	private OffsetDateTime dataAdimissao;
 	private OffsetDateTime dataDesligamento;

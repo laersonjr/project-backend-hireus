@@ -14,7 +14,7 @@ import lombok.Setter;
 public class CargoInputModel {
 	
 	private Long id;
-	@NotBlank
+	@NotBlank()
 	@Size(min = 2, max = 50)
 //	@Pattern(regexp = "^[A-Z]+(.)*")
 	private String descricaoCargo;

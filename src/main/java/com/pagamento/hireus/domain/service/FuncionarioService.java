@@ -2,7 +2,9 @@ package com.pagamento.hireus.domain.service;
 
 import java.net.URI;
 import java.time.OffsetDateTime;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.pagamento.hireus.api.exceptionhandler.EmptyRecurseException;
 import com.pagamento.hireus.api.model.FuncionarioInputModel;
+import com.pagamento.hireus.api.model.FuncionarioOutputModel;
 import com.pagamento.hireus.domain.model.Cargo;
 import com.pagamento.hireus.domain.model.Funcionario;
 import com.pagamento.hireus.domain.repository.CargoRepository;
@@ -19,48 +22,74 @@ import com.pagamento.hireus.domain.repository.FuncionarioRepository;
 
 @Service
 public class FuncionarioService {
-	
+
 	@Autowired
 	private FuncionarioRepository funcionarioRepository;
-	
+
 	@Autowired
 	private ModelMapper modelMapper;
-	
+
 	@Autowired
 	private CargoRepository cargoRepository;
-	
-	public ResponseEntity<Funcionario> salvarFuncionario(FuncionarioInputModel funcionarioInputModel){
+
+	public ResponseEntity<FuncionarioOutputModel> buscarFuncionarioIdService(Long id) {
+		Funcionario funcionario = buscarFuncionarioPeloId(id);
+		return ResponseEntity.ok(toModel(funcionario));
+
+	}
+
+	public ResponseEntity<Funcionario> salvarFuncionarioService(FuncionarioInputModel funcionarioInputModel) {
 		Funcionario funcionario = toEntity(funcionarioInputModel);
 		Cargo cargo = cargoRepository.findById(funcionarioInputModel.getCargoId()).get();
 		funcionario.setDataAdimissao(OffsetDateTime.now());
-		funcionario.setStatus(true);
+		funcionario.setAtivo(true);
 		funcionario.setCargo(cargo);
 		funcionario = funcionarioRepository.save(funcionario);
-		//HATEOS
+
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(funcionario.getId())
 				.toUri();
 		return ResponseEntity.created(uri).body(funcionario);
 	}
-	
-	
-	public ResponseEntity<Funcionario> excluirFuncionario(Long id) {
+
+	public ResponseEntity<Funcionario> excluirFuncionarioService(Long id) {
 		Funcionario funcionario = buscarFuncionarioPeloId(id);
 		funcionarioRepository.deleteById(funcionario.getId());
 		return ResponseEntity.noContent().build();
-		
 	}
-	
+
+	public ResponseEntity<Funcionario> atualizarFuncionarioService(Long id,
+			FuncionarioInputModel funcionarioInputModel) {
+		Funcionario funcionario = buscarFuncionarioPeloId(id);
+
+		funcionario.setId(id);
+		funcionario.setNomeFuncionario(funcionarioInputModel.getNomeFuncionario());
+		funcionario.setMatriculaFuncionario(funcionarioInputModel.getMatriculaFuncionario());
+		Cargo cargo = cargoRepository.findById(funcionarioInputModel.getCargoId()).get();
+		funcionario.setCargo(cargo);
+
+		funcionario = funcionarioRepository.save(funcionario);
+
+		return ResponseEntity.ok(funcionario);
+	}
+
+	public FuncionarioOutputModel toModel(Funcionario funcionario) {
+		return modelMapper.map(funcionario, FuncionarioOutputModel.class);
+	}
+
+	public List<FuncionarioOutputModel> toCollectionModel(List<Funcionario> funcionarios) {
+		return funcionarios.stream().map(this::toModel).collect(Collectors.toList());
+	}
+
 	private Funcionario toEntity(FuncionarioInputModel funcionarioInputModel) {
 		return modelMapper.map(funcionarioInputModel, Funcionario.class);
 	}
-	
+
 	private Funcionario buscarFuncionarioPeloId(Long id) {
 		Optional<Funcionario> funcionario = funcionarioRepository.findById(id);
-		if(funcionario.isEmpty()) {
+		if (funcionario.isEmpty()) {
 			throw new EmptyRecurseException("Nenhum recurso encontrado!");
 		}
 		return funcionario.get();
-		
 	}
-	
+
 }
