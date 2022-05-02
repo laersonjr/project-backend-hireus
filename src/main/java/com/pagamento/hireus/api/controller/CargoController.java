@@ -51,9 +51,6 @@ public class CargoController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	/**
-	 * @author Bruno Brito ajudou no Hatoes.
-	 */
 	public ResponseEntity<Cargo> salvarCargo(@Valid @RequestBody CargoInputModel cargoInputModel) {
 		Cargo cargo = toEntity(cargoInputModel);
 		cargo = cargoRepository.save(cargo);
