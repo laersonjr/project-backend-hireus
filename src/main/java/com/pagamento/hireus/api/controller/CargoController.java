@@ -1,12 +1,9 @@
 package com.pagamento.hireus.api.controller;
 
-import java.net.URI;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,12 +16,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.pagamento.hireus.api.model.CargoInputModel;
 import com.pagamento.hireus.api.model.CargoOutputModel;
 import com.pagamento.hireus.domain.model.Cargo;
 import com.pagamento.hireus.domain.repository.CargoRepository;
+import com.pagamento.hireus.domain.service.CargoService;
 
 @RestController
 @RequestMapping("/cargos")
@@ -34,71 +31,34 @@ public class CargoController {
 	private CargoRepository cargoRepository;
 	
 	@Autowired
-	private ModelMapper modelMapper;
+	private CargoService cargoService;
 	
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
 	public List<CargoOutputModel> listarCargo(){
-		return toCollectionModel(cargoRepository.findAll());
+		return cargoService.toCollectionModel(cargoRepository.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Cargo> buscarCargoId(@PathVariable Long id){
-		return cargoRepository.findById(id)
-				.map(record -> ResponseEntity.ok().body(record))
-		           .orElse(ResponseEntity.notFound().build());	
+	public ResponseEntity<CargoOutputModel> buscarCargoId(@PathVariable Long id){
+		return cargoService.buscarCargoIdService(id);
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	/**
-	 * @author Bruno Brito ajudou no Hatoes.
-	 */
 	public ResponseEntity<Cargo> salvarCargo(@Valid @RequestBody CargoInputModel cargoInputModel) {
-		Cargo cargo = toEntity(cargoInputModel);
-		cargo = cargoRepository.save(cargo);
-		//HATEOS
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(cargo.getId())
-				.toUri();
-		return ResponseEntity.created(uri).body(cargo);
+		return cargoService.salvarCargoService(cargoInputModel);
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Cargo> excluirCargo(@PathVariable Long id) {
-		if (!cargoRepository.existsById(id)) {
-			return ResponseEntity.notFound().build();
-		}
-
-		cargoRepository.deleteById(id);
-		return ResponseEntity.noContent().build();
+		return cargoService.excluirCargoService(id);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Cargo> atualizarCargo(@PathVariable Long id,
-			@RequestBody Cargo cargo) {
-		if (!cargoRepository.existsById(id)) {
-			return ResponseEntity.notFound().build();
-		}
-
-		cargo.setId(id);
-		cargo = cargoRepository.save(cargo);
-
-		return ResponseEntity.ok(cargo);
+	public ResponseEntity<Cargo> atualizarCargo(@PathVariable Long id, 
+			@Valid @RequestBody CargoInputModel cargoInputModel) {
+		return cargoService.atualizarCargoService(id, cargoInputModel);
 	}
 	
-	private CargoOutputModel toModel(Cargo cargo) {
-		return modelMapper.map(cargo, CargoOutputModel.class);
-	}
-	
-	private List<CargoOutputModel> toCollectionModel(List<Cargo> cargos){
-		return cargos.stream()
-				.map(this::toModel)
-				.collect(Collectors.toList());
-	}
-	
-	private Cargo toEntity(CargoInputModel cargoInputModel) {
-		return modelMapper.map(cargoInputModel, Cargo.class);
-	}
-	
-
 }
