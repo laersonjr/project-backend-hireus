@@ -100,7 +100,7 @@ public class FuncionarioService {
 		boolean matriculaLocalizada = funcionarioRepository.findByMatriculaFuncionario(funcionario.getMatriculaFuncionario())
 				.stream().anyMatch(funcionarioExistente -> !funcionarioExistente.equals(funcionario));
 		if (matriculaLocalizada) {
-			throw new FuncionarioAlreadyExistingException("Esse funcionario já tem cadastro com essa matricula!");			
+			throw new FuncionarioAlreadyExistingException("Já existe um funcionário com essa matricula!");			
 		}
 	}
 }

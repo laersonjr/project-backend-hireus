@@ -43,7 +43,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 		
 		return handleExceptionInternal(ex, problema, headers, status, request);
 	}
-
+	
 	@ExceptionHandler(EmptyRecurseException.class)
 	public ResponseEntity<Object> handleRecursoNaoEncontrado(EmptyRecurseException ex, WebRequest request){
 		var status = HttpStatus.NOT_FOUND;
