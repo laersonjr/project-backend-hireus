@@ -54,5 +54,26 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 		
 		return handleExceptionInternal(ex, problema, new HttpHeaders(), status, request);
 	}
-
+	
+	@ExceptionHandler(ValueMostBePositiveExcpetion.class)
+	public ResponseEntity<Object> handleValorTemQueSerPositivo(ValueMostBePositiveExcpetion ex, WebRequest request){
+		var status = HttpStatus.BAD_REQUEST;
+		
+		Problema problema = new Problema();
+		problema.setStatus(status.value());
+		problema.setTitulo(ex.getMessage());
+		
+		return handleExceptionInternal(ex, problema, new HttpHeaders(), status, request);
+	}
+	
+	@ExceptionHandler(FuncionarioAlreadyExistingException.class)
+	public ResponseEntity<Object> handleFuncionarioMatriculaExistente(FuncionarioAlreadyExistingException ex, WebRequest request){
+		var status = HttpStatus.BAD_REQUEST;
+		
+		Problema problema = new Problema();
+		problema.setStatus(status.value());
+		problema.setTitulo(ex.getMessage());
+		
+		return handleExceptionInternal(ex, problema, new HttpHeaders(), status, request);
+	}
 }

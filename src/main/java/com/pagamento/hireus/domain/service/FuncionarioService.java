@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.pagamento.hireus.api.exceptionhandler.EmptyRecurseException;
+import com.pagamento.hireus.api.exceptionhandler.FuncionarioAlreadyExistingException;
 import com.pagamento.hireus.api.model.FuncionarioInputModel;
 import com.pagamento.hireus.api.model.FuncionarioOutputModel;
 import com.pagamento.hireus.domain.model.Cargo;
@@ -40,6 +41,7 @@ public class FuncionarioService {
 
 	public ResponseEntity<Funcionario> salvarFuncionarioService(FuncionarioInputModel funcionarioInputModel) {
 		Funcionario funcionario = toEntity(funcionarioInputModel);
+		checarMatriculaFuncionario(funcionario);
 		Cargo cargo = cargoRepository.findById(funcionarioInputModel.getCargoId()).get();
 		funcionario.setDataAdimissao(OffsetDateTime.now());
 		funcionario.setAtivo(true);
@@ -66,7 +68,7 @@ public class FuncionarioService {
 		funcionario.setMatriculaFuncionario(funcionarioInputModel.getMatriculaFuncionario());
 		Cargo cargo = cargoRepository.findById(funcionarioInputModel.getCargoId()).get();
 		funcionario.setCargo(cargo);
-
+		checarMatriculaFuncionario(funcionario);
 		funcionario = funcionarioRepository.save(funcionario);
 
 		return ResponseEntity.ok(funcionario);
@@ -92,4 +94,13 @@ public class FuncionarioService {
 		return funcionario.get();
 	}
 
+	private void checarMatriculaFuncionario(Funcionario funcionario) {
+		//Optional<Funcionario> funcExistente = funcionarioRepository
+		//		.findByMatriculaFuncionario(funcionario.getMatriculaFuncionario());
+		boolean matriculaLocalizada = funcionarioRepository.findByMatriculaFuncionario(funcionario.getMatriculaFuncionario())
+				.stream().anyMatch(funcionarioExistente -> !funcionarioExistente.equals(funcionario));
+		if (matriculaLocalizada) {
+			throw new FuncionarioAlreadyExistingException("Já existe um funcionário com essa matricula!");			
+		}
+	}
 }
