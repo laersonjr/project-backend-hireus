@@ -8,9 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
-
 import lombok.Getter;
 
 @Getter
@@ -23,11 +20,8 @@ public class FolhaPagamento {
 	@ManyToOne
 	private Funcionario funcionario;
 	private String referencia;
-	@JsonProperty(access = Access.READ_ONLY)
 	private BigDecimal inss;
-	@JsonProperty(access = Access.READ_ONLY)
 	private BigDecimal irrf;
-	@JsonProperty(access = Access.READ_ONLY)
 	private BigDecimal salarioLiquido;
 
 	public void setId(Long id) {
@@ -64,13 +58,13 @@ public class FolhaPagamento {
 		if (salarioFuncionario.compareTo(BigDecimal.valueOf(1903.98)) <= 0) {
 			this.irrf = salarioFuncionario.multiply(converteDoubleparaBigDecimal(0.0));
 		} else if (salarioFuncionario.compareTo(BigDecimal.valueOf(2826.65)) <= 0) {
-			this.irrf = salarioFuncionario.multiply(converteDoubleparaBigDecimal(0.075));
+			this.irrf = salarioFuncionario.multiply(converteDoubleparaBigDecimal((0.075/12)));
 		} else if (salarioFuncionario.compareTo(BigDecimal.valueOf(3751.05)) <= 0) {
-			this.irrf = salarioFuncionario.multiply(converteDoubleparaBigDecimal(0.15));
+			this.irrf = salarioFuncionario.multiply(converteDoubleparaBigDecimal((0.15/12)));
 		} else if (salarioFuncionario.compareTo(BigDecimal.valueOf(4664.68)) <= 0) {
-			this.irrf = salarioFuncionario.multiply(converteDoubleparaBigDecimal(0.225));
+			this.irrf = salarioFuncionario.multiply(converteDoubleparaBigDecimal((0.225/12)));
 		} else {
-			this.irrf = salarioFuncionario.multiply(converteDoubleparaBigDecimal(0.275));
+			this.irrf = salarioFuncionario.multiply(converteDoubleparaBigDecimal((0.275/12)));
 		}	
 	}
 

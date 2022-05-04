@@ -76,10 +76,10 @@ public class CargoService {
 		return modelMapper.map(cargoInputModel, Cargo.class);
 	}
 	
-	private Cargo buscarCargoPeloId(Long id) {
+	public Cargo buscarCargoPeloId(Long id) {
 		Optional<Cargo> cargo = cargoRepository.findById(id);
 		if (cargo.isEmpty()) {
-			throw new EmptyRecurseException("Nenhum recurso encontrado!");
+			throw new EmptyRecurseException("Cargo não encontrado!");
 		}
 		return cargo.get();
 	}
