@@ -12,7 +12,7 @@ public class FuncionarioOutputModel {
 	private Long id;
 	private String nomeFuncionario;
 	private String matriculaFuncionario;
-	private Boolean status;
+	private Boolean ativo;
 	private OffsetDateTime dataAdimissao;
 	private OffsetDateTime dataDesligamento;
 	private Long cargoId;

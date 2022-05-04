@@ -1,17 +1,25 @@
 package com.pagamento.hireus.api.controller;
 
-import java.util.Optional;
+import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pagamento.hireus.api.model.FolhaPagamentoInputModel;
+import com.pagamento.hireus.api.model.FolhaPagamentoOutputModel;
 import com.pagamento.hireus.domain.model.FolhaPagamento;
-import com.pagamento.hireus.domain.model.Funcionario;
 import com.pagamento.hireus.domain.repository.FolhaPagamentoRepository;
-import com.pagamento.hireus.domain.repository.FuncionarioRepository;
+import com.pagamento.hireus.domain.service.FolhaPagamentoService;
 
 
 @RestController
@@ -19,25 +27,25 @@ import com.pagamento.hireus.domain.repository.FuncionarioRepository;
 public class FolhaPagamentoController {
 	
 	@Autowired
-	private FolhaPagamentoRepository pagamentoRepository; 
+	FolhaPagamentoService pagamentoService;
 	
 	@Autowired
-	private FuncionarioRepository funcionarioRepository;
+	FolhaPagamentoRepository pagamentoRepository;
+	
+	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
+	public List<FolhaPagamentoOutputModel> listarFolhasPagamentos(){
+		return pagamentoService.toCollectionModel(pagamentoRepository.findAll());
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<FolhaPagamentoOutputModel> buscarFolhaPagamentoId(@PathVariable Long id){
+		return pagamentoService.buscarPagamentoIdService(id);
+	}
 	
 	@PostMapping
-	public FolhaPagamento gerarFolha(@RequestBody FolhaPagamento folhaPagamento) {
-		Long idFuncionarioBuscado = folhaPagamento.getFuncionario().getId();
-		Optional<Funcionario> funcionarioBuscado = funcionarioRepository.findById(idFuncionarioBuscado);
-
-		if (!funcionarioBuscado.isPresent()) {
-			throw new IllegalArgumentException("Funcionário não existe na base");
-		}
-		folhaPagamento.setFuncionario(funcionarioBuscado.get());
-		folhaPagamento.setInss();
-		folhaPagamento.setIrrf();
-		folhaPagamento.setSalarioLiquido();
-
-		return pagamentoRepository.save(folhaPagamento);
+	public ResponseEntity<FolhaPagamento> gerarFolha(@Valid @RequestBody FolhaPagamentoInputModel folhaPagamentoInputModel) {
+		return pagamentoService.gerarFolhaService(folhaPagamentoInputModel);
 	}
 	
 }

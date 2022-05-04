@@ -71,4 +71,9 @@ public class FuncionarioController {
 		return funcionarioService.atualizarFuncionarioService(id, funcionarioInputModel);
 	}
 	
+	@PutMapping("/desligar/{id}")
+	public ResponseEntity<Funcionario> desligarFuncionario(@PathVariable Long id, @Valid @RequestBody FuncionarioInputModel funcionarioInputModel) {
+		return funcionarioService.desligarFuncionarioService(id);
+	}
+	
 }
