@@ -2,6 +2,7 @@ package com.pagamento.hireus.domain.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,9 +20,13 @@ public class FolhaPagamento {
 	private Long id;
 	@ManyToOne
 	private Funcionario funcionario;
+	@Column(nullable = false, length = 6)
 	private String referencia;
+	@Column(nullable = false)
 	private BigDecimal inss;
+	@Column(nullable = false)
 	private BigDecimal irrf;
+	@Column(nullable = false)
 	private BigDecimal salarioLiquido;
 
 	public void setId(Long id) {
