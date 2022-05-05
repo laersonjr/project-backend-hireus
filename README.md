@@ -78,10 +78,6 @@ Explicar como foi implementação do sistema.
 
 Do que foi usado.
 
-## 🖇️ Colaborando
-
-Por favor, leia o [COLABORACAO.md](https://gist.github.com/usuario/linkParaInfoSobreContribuicoes) para obter detalhes sobre o nosso código de conduta e o processo para nos enviar pedidos de solicitação.
-
 ## ✒️  Contribuidores
 
 | [<img src="https://avatars.githubusercontent.com/u/73408388?v=4" width=115><br><sub>Bruno Brito</sub>](hhttps://github.com/brunopbrito31) |  [<img src="https://avatars.githubusercontent.com/u/82125551?v=4" width=115><br><sub>Gabriel Moreira</sub>](https://github.com/Gabriel-kopke-jr) |  [<img src="https://avatars.githubusercontent.com/u/58311661?v=4" width=115><br><sub>Laerson</sub>](https://github.com/laersonjr) |  [<img src="https://avatars.githubusercontent.com/u/53881848?v=4" width=115><br><sub>Leonardo</sub>](https://github.com/LeonardoMeloTI) |  [<img src="https://avatars.githubusercontent.com/u/97760233?v=4" width=115><br><sub>Marcklen Guimarães</sub>](https://github.com/Marcklen) |  [<img src="https://avatars.githubusercontent.com/u/59845047?v=4" width=115><br><sub>Valdeir Camargo</sub>](https://github.com/Camargovf)
