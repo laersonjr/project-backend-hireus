@@ -128,7 +128,7 @@ JDK 11
 
 ## 🎁 Agredecimento
 
-* Em especial ao time pelo trabalho incrível e pela jornada durante o processo.
+* Em especial ao time pelo trabalho incrível e pela jornada durante o Bootcamp.
 * A Gama Academy, Mariane e Débora.
 * A Cerc pela oportunidade.  
 * A turma pela colaboração e compartilhamento de conhecimento.
