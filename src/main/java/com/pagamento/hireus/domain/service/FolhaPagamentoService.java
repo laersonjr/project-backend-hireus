@@ -76,5 +76,6 @@ public class FolhaPagamentoService {
 
 	public FolhaPagamento toEntity(FolhaPagamentoInputModel folhaPagamentoInputModel) {
 		return modelMapper.map(folhaPagamentoInputModel, FolhaPagamento.class);
+
 	}	
 }

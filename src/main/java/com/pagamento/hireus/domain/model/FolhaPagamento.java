@@ -81,4 +81,5 @@ public class FolhaPagamento {
 	private BigDecimal converteDoubleparaBigDecimal(Double valor) {
 		return BigDecimal.valueOf(valor);
 	}
+
 }

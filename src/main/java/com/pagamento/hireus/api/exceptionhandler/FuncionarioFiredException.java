@@ -8,4 +8,3 @@ public class FuncionarioFiredException extends RuntimeException {
 		super(message);
 	}
 }
-

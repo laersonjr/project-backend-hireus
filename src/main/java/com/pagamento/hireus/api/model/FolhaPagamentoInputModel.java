@@ -18,5 +18,6 @@ public class FolhaPagamentoInputModel {
 	@NotBlank
 	@Size(min = 6, max = 6)
 	@Pattern(regexp = "[0-9]*")
-	private String referencia; 
+	private String referencia;
+  
 }
