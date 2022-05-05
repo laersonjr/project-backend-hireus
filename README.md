@@ -58,7 +58,6 @@ Até finalizar
 ```
 Termine com um exemplo de como obter dados do sistema ou como usá-los para uma pequena demonstração.
 
-
 ## ⚙️ Executando os testes
 
 Explicar como executar os testes automatizados para este sistema.
@@ -110,7 +109,6 @@ Explicar como foi implementação do sistema.
 * [Trello](https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white) - Organização do projeto
 * [Java Spring Boot](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white) - Usado para construção do código
 
-
 ## 📌 Versão das tecnologias
 
 JDK 11
@@ -119,6 +117,7 @@ JDK 11
 
 | [<img src="https://avatars.githubusercontent.com/u/73408388?v=4" width=115><br><sub>Bruno Brito</sub>](hhttps://github.com/brunopbrito31) |  [<img src="https://avatars.githubusercontent.com/u/82125551?v=4" width=115><br><sub>Gabriel Moreira</sub>](https://github.com/Gabriel-kopke-jr) |  [<img src="https://avatars.githubusercontent.com/u/58311661?v=4" width=115><br><sub>Laerson</sub>](https://github.com/laersonjr) |  [<img src="https://avatars.githubusercontent.com/u/53881848?v=4" width=115><br><sub>Leonardo</sub>](https://github.com/LeonardoMeloTI) |  [<img src="https://avatars.githubusercontent.com/u/97760233?v=4" width=115><br><sub>Marcklen Guimarães</sub>](https://github.com/Marcklen) |  [<img src="https://avatars.githubusercontent.com/u/59845047?v=4" width=115><br><sub>Valdeir Camargo</sub>](https://github.com/Camargovf)
 | :---: | :---: | :---: | :---: | :---: | :---: |
+
 
 ## 💪 Como contribuir para o projeto
 
