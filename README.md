@@ -87,7 +87,7 @@ Por favor, leia o [COLABORACAO.md](https://gist.github.com/usuario/linkParaInfoS
 | [<img src="https://avatars.githubusercontent.com/u/73408388?v=4" width=115><br><sub>Bruno Brito</sub>](hhttps://github.com/brunopbrito31) |  [<img src="https://avatars.githubusercontent.com/u/82125551?v=4" width=115><br><sub>Gabriel Moreira</sub>](https://github.com/Gabriel-kopke-jr) |  [<img src="https://avatars.githubusercontent.com/u/58311661?v=4" width=115><br><sub>Laerson</sub>](https://github.com/laersonjr) |  [<img src="https://avatars.githubusercontent.com/u/53881848?v=4" width=115><br><sub>Leonardo</sub>](https://github.com/LeonardoMeloTI) |  [<img src="https://avatars.githubusercontent.com/u/97760233?v=4" width=115><br><sub>Marcklen Guimarães</sub>](https://github.com/Marcklen) |  [<img src="https://avatars.githubusercontent.com/u/59845047?v=4" width=115><br><sub>Valdeir Camargo</sub>](https://github.com/Camargovf)
 | :---: | :---: | :---: | :---: | :---: | :---: |
 
-# 💪 Como contribuir para o projeto
+## 💪 Como contribuir para o projeto
 
 1. Faça um **fork** do projeto.
 2. Crie uma nova branch com as suas alterações: `git checkout -b nomedoarquivo`
