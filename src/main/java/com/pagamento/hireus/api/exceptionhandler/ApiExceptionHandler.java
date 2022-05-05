@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import com.pagamento.hireus.api.exceptionhandler.Problema.Erro;
+
 @ControllerAdvice
 public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 	
@@ -26,7 +28,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
 		
-		var erros = new ArrayList<Problema.Erro>();
+		ArrayList<Erro> erros = new ArrayList<Problema.Erro>();
 		
 		for (ObjectError error : ex.getBindingResult().getAllErrors()) {
 			String nome = ((FieldError) error).getField();
@@ -35,7 +37,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 			erros.add(new Problema.Erro(nome, mensagem));
 		}
 		
-		var problema = new Problema();
+		Problema problema = new Problema();
 		problema.setStatus(status.value());
 		problema.setTitulo("Um ou mais campos estão inválidos. Faça o preenchimento correto e tente novamente");
 		problema.setErros(erros);
@@ -43,14 +45,12 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 		
 		return handleExceptionInternal(ex, problema, headers, status, request);
 	}
-
+	
 	@ExceptionHandler(EmptyRecurseException.class)
 	public ResponseEntity<Object> handleRecursoNaoEncontrado(EmptyRecurseException ex, WebRequest request){
 		var status = HttpStatus.NOT_FOUND;
 		
-		Problema problema = new Problema();
-		problema.setStatus(status.value());
-		problema.setTitulo(ex.getMessage());
+		Problema problema = retornarProb(status, ex);
 		
 		return handleExceptionInternal(ex, problema, new HttpHeaders(), status, request);
 	}
@@ -59,9 +59,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 	public ResponseEntity<Object> handleValorTemQueSerPositivo(ValueMostBePositiveExcpetion ex, WebRequest request){
 		var status = HttpStatus.BAD_REQUEST;
 		
-		Problema problema = new Problema();
-		problema.setStatus(status.value());
-		problema.setTitulo(ex.getMessage());
+		Problema problema = retornarProb(status, ex);
 		
 		return handleExceptionInternal(ex, problema, new HttpHeaders(), status, request);
 	}
@@ -70,10 +68,24 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 	public ResponseEntity<Object> handleFuncionarioMatriculaExistente(FuncionarioAlreadyExistingException ex, WebRequest request){
 		var status = HttpStatus.BAD_REQUEST;
 		
+		Problema problema = retornarProb(status, ex);
+		
+		return handleExceptionInternal(ex, problema, new HttpHeaders(), status, request);
+	}
+	
+	@ExceptionHandler(FuncionarioFiredException.class)
+	public ResponseEntity<Object> handleFuncionarioInativo(FuncionarioFiredException ex, WebRequest request){
+		var status = HttpStatus.BAD_REQUEST;
+		
+		Problema problema = retornarProb(status, ex);
+		
+		return handleExceptionInternal(ex, problema, new HttpHeaders(), status, request);
+	}
+	
+	private Problema retornarProb(HttpStatus status, RuntimeException ex) {
 		Problema problema = new Problema();
 		problema.setStatus(status.value());
 		problema.setTitulo(ex.getMessage());
-		
-		return handleExceptionInternal(ex, problema, new HttpHeaders(), status, request);
+		return problema;
 	}
 }
