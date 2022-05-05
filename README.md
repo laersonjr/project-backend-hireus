@@ -76,7 +76,7 @@ Explicar como foi implementação do sistema.
 
 ## 📌 Versão
 
-Do que foi usado.
+JDK 11 
 
 ## ✒️  Contribuidores
 
