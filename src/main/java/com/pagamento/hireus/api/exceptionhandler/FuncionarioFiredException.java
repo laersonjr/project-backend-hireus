@@ -7,7 +7,4 @@ public class FuncionarioFiredException extends RuntimeException {
 	public FuncionarioFiredException(String message) {
 		super(message);
 	}
-	
-	
-
 }

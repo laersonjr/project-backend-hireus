@@ -107,4 +107,5 @@ public class FuncionarioService {
 		funcionarioRepository.save(funcionario);
 		return ResponseEntity.ok(funcionario);
 	}
+
 }

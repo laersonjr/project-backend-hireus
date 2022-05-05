@@ -9,3 +9,4 @@ import com.pagamento.hireus.domain.model.FolhaPagamento;
 public interface FolhaPagamentoRepository extends JpaRepository<FolhaPagamento, Long>{
 
 }
+

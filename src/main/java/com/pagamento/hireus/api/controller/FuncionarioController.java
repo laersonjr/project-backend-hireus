@@ -75,5 +75,4 @@ public class FuncionarioController {
 	public ResponseEntity<Funcionario> desligarFuncionario(@PathVariable Long id, @Valid @RequestBody FuncionarioInputModel funcionarioInputModel) {
 		return funcionarioService.desligarFuncionarioService(id);
 	}
-	
 }

@@ -17,4 +17,5 @@ public class FuncionarioOutputModel {
 	private OffsetDateTime dataDesligamento;
 	private Long cargoId;
 	private String cargoDescricaoCargo;
+
 }

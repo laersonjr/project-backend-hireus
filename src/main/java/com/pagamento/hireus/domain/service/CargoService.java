@@ -95,5 +95,4 @@ public class CargoService {
 			throw new ValueMostBePositiveExcpetion("O valor informado para a total horas tem que ser maior que 0");
 		}
 	}
-}	
-
+}

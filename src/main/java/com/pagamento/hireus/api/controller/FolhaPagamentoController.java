@@ -46,6 +46,5 @@ public class FolhaPagamentoController {
 	@PostMapping
 	public ResponseEntity<FolhaPagamento> gerarFolha(@Valid @RequestBody FolhaPagamentoInputModel folhaPagamentoInputModel) {
 		return pagamentoService.gerarFolhaService(folhaPagamentoInputModel);
-	}
-	
+	}	
 }

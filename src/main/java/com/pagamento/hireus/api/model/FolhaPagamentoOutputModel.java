@@ -17,5 +17,4 @@ public class FolhaPagamentoOutputModel {
 	private BigDecimal inss;
 	private BigDecimal irrf;
 	private BigDecimal salarioLiquido;
-
 }
