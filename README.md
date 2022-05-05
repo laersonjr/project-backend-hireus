@@ -14,8 +14,31 @@ Consulte **Implantação** para saber como implantar o projeto.
 
 De que coisas você precisa para instalar o software e como instalá-lo?
 
+
 ```
 Dar exemplos
+```
+
+#### 🎲 Rodando o Backend (servidor)
+
+```bash
+
+ Clone este repositório
+$ git clone git@github.com:nomedapessoa/README-nomedoprojeto
+
+ Acesse a pasta do projeto no terminal/cmd
+$ cd README-nomedoprojeto
+
+ Vá para a pasta nomeprojeto
+$ cd projeto
+
+ Instale as dependências
+$ npm install
+
+ Execute a aplicação em modo de desenvolvimento
+$ npm run caminhodoprojeto
+
+ O servidor inciará na porta:8080 - acesse http://localhost:8080 
 ```
 
 ### 🔧 Instalação
@@ -34,6 +57,7 @@ E aqui repetir:
 Até finalizar
 ```
 Termine com um exemplo de como obter dados do sistema ou como usá-los para uma pequena demonstração.
+
 
 ## ⚙️ Executando os testes
 
@@ -62,6 +86,18 @@ Explique que eles verificam esses testes e porquê.
 Dar exemplos
 ```
 
+## 🔨 Funcionalidades do projeto
+
+- `Funcionalidade 1` `cadastroFuncionario`: explicar o que será feito aqui
+
+- `Funcionalidade 2` `cadastroFuncionario`: explicar o que será feito aqui.
+ 
+- `Funcionalidade 3` `Cadastrofuncionario`: explicar o que será feito aqui.
+
+- `Funcionalidade 4` `cadastrofuncionario`: explicar o que será feito aqui.
+
+- `Funcionalidade 5` `cadastrofuncionario`: Explicar o que será feito aqui. 
+
 ## 📦 Desenvolvimento
 
 Explicar como foi implementação do sistema.
@@ -73,10 +109,11 @@ Explicar como foi implementação do sistema.
 * [Git](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white) - Controle de versões distribuído
 * [Trello](https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white) - Organização do projeto
 * [Java Spring Boot](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white) - Usado para construção do código
+* 
 
 ## 📌 Versão
 
-JDK 11 
+JDK 11
 
 ## ✒️  Contribuidores
 
