@@ -89,10 +89,10 @@ Por favor, leia o [COLABORACAO.md](https://gist.github.com/usuario/linkParaInfoS
 
 💪 Como contribuir para o projeto
 
-  Faça um fork do projeto.
-  Crie uma nova branch com as suas alterações: git checkout -b my-feature
-  Salve as alterações e crie uma mensagem de commit contando o que você fez: git commit -m "feature: My new feature"
-  Envie as suas alterações: git push origin my-feature
+1. Faça um **fork** do projeto.
+2. Crie uma nova branch com as suas alterações: `git checkout -b nomedoarquivo`
+3. Salve as alterações e crie uma mensagem de commit contando o que você fez: `git commit -m "atualização"`
+4. Envie as suas alterações: `git push origin nomedoarquivo`
 
 ## 🎁 Agredecimento
 
