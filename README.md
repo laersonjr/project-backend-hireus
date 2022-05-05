@@ -44,7 +44,6 @@ São necessários os seguintes pré-requisitos para a execução do projeto dese
 * Intellj IDEA Community Edition ou sua IDE favorita.
 * Banco de dados Mysql workbench.
 * Controle de versão GIT instalado na sua máquina.
-* Java 11 ou versões superiores.
 * Docker
 
 ### 🔩 Analise os testes de ponta a ponta
@@ -65,7 +64,7 @@ Dar exemplos
 
 ## 📦 Desenvolvimento
 
-Explicar como implementação do sistema.
+Explicar como foi implementação do sistema.
 
 ## 🛠️ Construído com as tecnologias 
 
@@ -75,12 +74,13 @@ Explicar como implementação do sistema.
 * [Trello](https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white) - Organização do projeto
 * [Java Spring Boot](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white) - Usado para construção do código
 
+## 📌 Versão
+
+Do que foi usado.
+
 ## 🖇️ Colaborando
 
 Por favor, leia o [COLABORACAO.md](https://gist.github.com/usuario/linkParaInfoSobreContribuicoes) para obter detalhes sobre o nosso código de conduta e o processo para nos enviar pedidos de solicitação.
-
-## 📌 Versão
-
 
 ## ✒️  Contribuidores
 
