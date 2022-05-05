@@ -109,7 +109,7 @@ Explicar como foi implementação do sistema.
 * [Git](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white) - Controle de versões distribuído
 * [Trello](https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white) - Organização do projeto
 * [Java Spring Boot](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white) - Usado para construção do código
-* 
+
 
 ## 📌 Versão das tecnologias
 
