@@ -111,7 +111,7 @@ Explicar como foi implementação do sistema.
 * [Java Spring Boot](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white) - Usado para construção do código
 * 
 
-## 📌 Versão
+## 📌 Versão das tecnologias
 
 JDK 11
 
