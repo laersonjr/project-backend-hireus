@@ -96,7 +96,7 @@ Dar exemplos
 
 - `Funcionalidade 4` `cadastrofuncionario`: explicar o que será feito aqui.
 
-- `Funcionalidade 5` `cadastrofuncionario`: Explicar o que será feito aqui. 
+- `Funcionalidade 5` `cadastrofuncionario`: explicar o que será feito aqui. 
 
 ## 📦 Desenvolvimento
 
