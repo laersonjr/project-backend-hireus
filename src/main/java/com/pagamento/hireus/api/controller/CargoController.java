@@ -23,6 +23,10 @@ import com.pagamento.hireus.domain.model.Cargo;
 import com.pagamento.hireus.domain.repository.CargoRepository;
 import com.pagamento.hireus.domain.service.CargoService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(value = "API REST Cargos")
 @RestController
 @RequestMapping("/cargos")
 public class CargoController {
@@ -33,28 +37,33 @@ public class CargoController {
 	@Autowired
 	private CargoService cargoService;
 	
+	@ApiOperation(value = "Retorna todos os cargos")
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
 	public List<CargoOutputModel> listarCargo(){
 		return cargoService.toCollectionModel(cargoRepository.findAll());
 	}
-	
+
+	@ApiOperation(value = "Retorna um id relacionado ao cargo")
 	@GetMapping("/{id}")
 	public ResponseEntity<CargoOutputModel> buscarCargoId(@PathVariable Long id){
 		return cargoService.buscarCargoIdService(id);
 	}
-	
+
+	@ApiOperation(value = "Cria um cargo")
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Cargo> salvarCargo(@Valid @RequestBody CargoInputModel cargoInputModel) {
 		return cargoService.salvarCargoService(cargoInputModel);
 	}
-	
+
+	@ApiOperation(value = "Deleta um cargo")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Cargo> excluirCargo(@PathVariable Long id) {
 		return cargoService.excluirCargoService(id);
 	}
-	
+
+	@ApiOperation(value = "Atualiza um cargo")
 	@PutMapping("/{id}")
 	public ResponseEntity<Cargo> atualizarCargo(@PathVariable Long id, 
 			@Valid @RequestBody CargoInputModel cargoInputModel) {

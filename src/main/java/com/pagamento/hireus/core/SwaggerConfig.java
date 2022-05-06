@@ -17,10 +17,11 @@ public class SwaggerConfig {
 
 	private static final String BASE_PACKAGE = "com.pagamento.hireus.api.controller";
     private static final String API_TITLE = "API de Folha de Pagamento";
-    private static final String API_DESCRIPTION = "REST API para controle da folha de pagamento";
-    private static final String CONTACT_NAME = "EQUIPE HIRE US";
+    private static final String API_DESCRIPTION = "O projeto HireUs consiste em uma REST api com regra de negócio: Folha de pagamento.\n" +
+				"O sistema permite criar funcionários, cargos, e aplicar regras de negócios financeiros e acompanhar o holerite mensal.";
+    private static final String CONTACT_NAME = "Projeto HIRE US";
     private static final String CONTACT_GITHUB = "https://gtihub de algum dos integrantes da equipe";
-    private static final String CONTACT_EMAIL = "hireus@gmail.com";
+    private static final String CONTACT_EMAIL = "Em construção";
 
     //Classe Externa Docket
 	@Bean

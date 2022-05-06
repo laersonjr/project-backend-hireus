@@ -21,7 +21,10 @@ import com.pagamento.hireus.domain.model.FolhaPagamento;
 import com.pagamento.hireus.domain.repository.FolhaPagamentoRepository;
 import com.pagamento.hireus.domain.service.FolhaPagamentoService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+@Api(value = "API REST Folha de Pagamentos")
 @RestController
 @RequestMapping("/pagamento")
 public class FolhaPagamentoController {
@@ -32,19 +35,22 @@ public class FolhaPagamentoController {
 	@Autowired
 	FolhaPagamentoRepository pagamentoRepository;
 	
+	@ApiOperation(value = "Lista Folhas de Pagamentos de todos funcionários")
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
 	public List<FolhaPagamentoOutputModel> listarFolhasPagamentos(){
 		return pagamentoService.toCollectionModel(pagamentoRepository.findAll());
 	}
-	
+
+	@ApiOperation(value = "Lista Folha de Pagamento de um id relacionado a um funcionário")
 	@GetMapping("/{id}")
 	public ResponseEntity<FolhaPagamentoOutputModel> buscarFolhaPagamentoId(@PathVariable Long id){
 		return pagamentoService.buscarPagamentoIdService(id);
 	}
-	
+
+	@ApiOperation(value = "Cria Folha de Pagamento de um id relacionado a um funcionário")
 	@PostMapping
 	public ResponseEntity<FolhaPagamento> gerarFolha(@Valid @RequestBody FolhaPagamentoInputModel folhaPagamentoInputModel) {
 		return pagamentoService.gerarFolhaService(folhaPagamentoInputModel);
-	}	
+	}
 }
