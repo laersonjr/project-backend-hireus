@@ -112,7 +112,9 @@ curl -X GET "http://localhost:8080/pagamento" -H "accept: /"
 
 A documentação foi realizada com Swagger com interface amigável para documentação e testes dos endpoints.
 
-PRINT Da tela Swagger total
+<div align="center">
+<img src="https://user-images.githubusercontent.com/53881848/167272171-9eeca6c2-bf64-4121-837a-612ddb9db7ec.jpeg" width="700px" />
+</div>
 
 
 <h1 align="center">🔨 Funcionalidades do projeto </h1>
