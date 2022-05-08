@@ -131,7 +131,7 @@ A documentação foi realizada com Swagger com interface amigável para document
 
 - `Funcionalidade 6` `cadastrofuncionario`: Atualiza os dados refentes: cargo, funcionário e folha de pagamento.
 
-- `Funcionalidade 6` `cadastrofuncionario`: Desativa um funcionário do sistema de pagamento.
+- `Funcionalidade 7` `cadastrofuncionario`: Desativa um funcionário do sistema de pagamento.
 
 
 <h1 align="center">🛠️ Construído com as tecnologias  </h1>
