@@ -137,10 +137,10 @@ A documentação foi realizada com Swagger com interface amigável para document
 <h1 align="center">🛠️ Construído com as tecnologias  </h1>
 
 
-* Springboot(https://spring.io/projects/spring-boot) - Usado para construção do código
-* Maven(http://maven.apache.org) - Usado para construção do código
-* Lombok(https://projectlombok.org/download) -
-* ModelMapper(http://modelmapper.org/) - 
+* Springboot(https://spring.io/projects/spring-boot)
+* Maven(http://maven.apache.org) 
+* Lombok(https://projectlombok.org/download) 
+* ModelMapper(http://modelmapper.org/) 
 * FasterXML(https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/latest/index.html)
 * Swagger(https://swagger.io/)
 * Hibernate(https://hibernate.org/) 
