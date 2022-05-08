@@ -165,7 +165,7 @@ A documentação foi realizada com Swagger com interface amigável para document
 
 * Agradecimento:
 * A squad pelo trabalho incrível, conhecimentos adquiridos durante a jornada da Academia.
-* A Gama Academy, instrutora Marianne(link) e supervisora Débora.
+* A Gama Academy, instrutora [Marianne](https://github.com/mariannesalomao?tab=repositories) e supervisora Débora.
 * A CERC pelo ambiente gerado e maestria do onboarding.  
 
 
