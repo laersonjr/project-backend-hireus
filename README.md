@@ -119,19 +119,19 @@ A documentação foi realizada com Swagger com interface amigável para document
 
 <h1 align="center">🔨 Funcionalidades do projeto </h1>
 
-- `Funcionalidade 1` `cadastroFuncionario`: Cadastra um cargo com suas devidas informações no sistema.
+- `Funcionalidade 1` `salvarCargo`: Cadastra um cargo com suas devidas informações no sistema.
 
-- `Funcionalidade 2` `cadastroFuncionario`: Cadastra um funcionário e seu respectivo cargo no sistema.
+- `Funcionalidade 2` `salvarFuncionario`: Cadastra um funcionário e seu respectivo cargo no sistema.
  
-- `Funcionalidade 3` `Cadastrofuncionario`: Cadastra a folha de pagamento relacionado a um funcionário no sistema.
+- `Funcionalidade 3` `gerarFolha`: Cadastra a folha de pagamento relacionado a um funcionário no sistema.
 
-- `Funcionalidade 4` `cadastrofuncionario`: Lista um funcionário por nome.
+- `Funcionalidade 4` `buscarPagamento`: Lista um funcionário por nome.
 
-- `Funcionalidade 5` `cadastrofuncionario`: Lista um funcionário por matrícula.
+- `Funcionalidade 5` `folhaPagamento`: Lista um funcionário por matrícula.
 
-- `Funcionalidade 6` `cadastrofuncionario`: Atualiza os dados refentes: cargo, funcionário e folha de pagamento.
+- `Funcionalidade 6` `atualizarFuncionario`: Atualiza os dados refentes: cargo, funcionário e folha de pagamento.
 
-- `Funcionalidade 7` `cadastrofuncionario`: Desativa um funcionário do sistema de pagamento.
+- `Funcionalidade 7` `desligarFuncionario`: Desativa um funcionário do sistema de pagamento.
 
 
 <h1 align="center">🛠️ Construído com as tecnologias  </h1>
