@@ -68,20 +68,26 @@ A tela da sua aplicação deve estar:
 
 <h1 align="center">🧩 Consumindo API </h1>
 
+
+
+
 <h3> CURL - cargos</h3>
 
 ```
 curl -X GET "http://localhost:8080/cargos" -H "accept: /"
 
 
+```
 <h3> CURL - funcionários</h3>
 
-
+```
 curl -X GET "http://localhost:8080/funcionarios" -H "accept: /"
 
 
+```
 <h3> CURL - pagamento</h3>
 
+```
 
 curl -X GET "http://localhost:8080/pagamento" -H "accept: /"
 
