@@ -137,15 +137,15 @@ A documentação foi realizada com Swagger com interface amigável para document
 <h1 align="center">🛠️ Construído com as tecnologias  </h1>
 
 
-* Springboot(https://spring.io/projects/spring-boot)
-* Maven(http://maven.apache.org) 
-* Lombok(https://projectlombok.org/download) 
-* ModelMapper(http://modelmapper.org/) 
-* FasterXML(https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/latest/index.html)
-* Swagger(https://swagger.io/)
-* Hibernate(https://hibernate.org/) 
-* MySQL(https://dev.mysql.com/downloads/workbench/)
-* DevTools(https://www.quickdev.org/?gclid=Cj0KCQjwsdiTBhD5ARIsAIpW8CLGWx99TFjAY-Xgu5fSe-Kno98jVPCa0ZxdyOvnbCZT3bDrFZgbxF0aAs3sEALw_wcB)
+* [Springboot](https://spring.io/projects/spring-boot)
+* [Maven](http://maven.apache.org) 
+* [Lombok](https://projectlombok.org/download) 
+* [ModelMapper](http://modelmapper.org/) 
+* [FasterXML](https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/latest/index.html)
+* [Swagger](https://swagger.io/)
+* [Hibernate](https://hibernate.org/) 
+* [MySQL](https://dev.mysql.com/downloads/workbench/)
+* [DevTools](https://www.quickdev.org/?gclid=Cj0KCQjwsdiTBhD5ARIsAIpW8CLGWx99TFjAY-Xgu5fSe-Kno98jVPCa0ZxdyOvnbCZT3bDrFZgbxF0aAs3sEALw_wcB)
 
 <h1 align="center">📚 Features em desenvolvimento</h1>
 
