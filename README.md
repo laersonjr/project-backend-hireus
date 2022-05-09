@@ -13,7 +13,7 @@ Realizado com framework SpringBoot em Java 11, gestor de dependência com Maven 
 
 
 <div align="center">
-<img src="https://user-images.githubusercontent.com/53881848/167269032-23fe72f3-2c11-4190-9f21-e58a5a694807.png" width="650px" />
+<img src="https://user-images.githubusercontent.com/53881848/167413273-7405175f-b038-4ad8-893e-186b4cda62de.jpg" width="650px" />
 </div>
 
 <h1 align="center"> 💻 Requisitos de inicialização do projeto</h1>
